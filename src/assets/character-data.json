@@ -10,7 +10,7 @@
         "name": "Achilles",
         "class": "Fighter",
         "level": 16,
-        "role": "Damage",
+        "role": "Support",
         "image": "images/achilles.png"
     },
     {
@@ -85,7 +85,7 @@
     },
     {
         "name": "Ares",
-        "class": "Warlock",
+        "class": "Paladin",
         "level": 8,
         "role": "Support",
         "image": "images/ares.png"

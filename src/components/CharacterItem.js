@@ -3,7 +3,8 @@ export default function CharacterItem(prop) {
     <div class="characterTotalInformation">
       <p>
         <img class="characterPortrait" src= {prop.image} alt = {prop.name}></img>
-        <div class="characterBio">
+      </p>
+      <div class="characterBio">
         <p class="propName">
             {prop.name}
         </p>
@@ -13,9 +14,8 @@ export default function CharacterItem(prop) {
         <p>
             <button onClick = {() => buttonClickFunc(prop)} > add to party! </button>
         </p>
-        </div>
-      </p>
       </div>
+    </div>
     );
   }
 
