@@ -1,0 +1,47 @@
+.App {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+
+.propName{
+  font-size: x-large;
+}
+
+.characterPortrait{
+  margin:1rem;
+  border: 2px solid #222222;
+  height: 200px;
+}
+
+.characterTotalInformation{
+  background-color: #f7f7e2;
+  border: 2px solid #222222;
+}
+
+.characterBio{
+  margin: 1rem;
+}
+
+
+
+
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
