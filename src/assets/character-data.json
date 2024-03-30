@@ -15,7 +15,7 @@
     },
     {
         "name": "Ruby",
-        "class": "Cleric",
+        "class": "Bard",
         "level": 15,
         "role": "Support",
         "image": "images/ruby.png"
@@ -29,7 +29,7 @@
     },
     {
         "name": "Ignatios",
-        "class": "Monk",
+        "class": "Paladin",
         "level": 12,
         "role": "Utility",
         "image": "images/ignatios.png"
@@ -50,9 +50,9 @@
     },
     {
         "name": "Sober",
-        "class": "Blood Hunter",
+        "class": "Fighter",
         "level": 10,
-        "role": "Damage",
+        "role": "Utility",
         "image": "images/sober.png"
     },
     {
@@ -64,7 +64,7 @@
     },
     {
         "name": "Seto Kaiba",
-        "class": "Sorcerer",
+        "class": "Wizard",
         "level": 9,
         "role": "Utility",
         "image": "images/seto-kaiba.png"

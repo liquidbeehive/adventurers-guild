@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState } from "react";
 import characterData from "./assets/character-data.json";
 import CharacterItem from "./components/CharacterItem";
-import FilterButton from "./components/FilterButton";
+// import FilterButton from "./components/FilterButton";
 
 characterData.forEach((item) => {
   item.image = process.env.PUBLIC_URL + "/" + item.image;
@@ -10,7 +10,7 @@ characterData.forEach((item) => {
 
 function App() {
 
-  const characterList = [...new Set(characterData.map((item) => item.class))];
+  // const characterList = [...new Set(characterData.map((item) => item.class))];
 
   const addToCartList = (character) => setCartList([...cartContent, character])
   const[cartContent, setCartList] = useState([])
@@ -27,32 +27,49 @@ function App() {
     addToCartList={addToCartList}/>
   ))
 
-  const characterDataArray = [...new Array(
+  const characterDataArray = [...new Set(
     characterData.map((item, index) => (
       <CharacterItem  
+      key = {item.name}
       name = {item.name} 
       class = {item.class} 
       level = {item.level}
       role = {item.role}
-      image = {item.image}/>
+      image = {item.image}
+      addToCartList={addToCartList}/>
     )))]
   
-  // const [filteredCharacters, setFilteredCharacters] = useState(characterDataArray);
+  // const [filteredCharactersList, setFilteredCharacters] = useState(characterDataArray)
+  // const displayedList = filteredCharactersList
+  // .map((character) =>
+  // (<div key = {character.props.name}>
+  //   {character}
+  // </div>))
 
-  const isFighter = (value) => value.class === "Fighter";
-  const desiredoutput = characterDataArray.map(isFighter);
-
-  const fighterList = characterDataArray.filter((character) => character.class === "Fighter")
+  // const fighterFilter = filteredCharactersList.filter((character) => character.props.class === "Fighter")
+  // this.setState({characters:fighterFilter})
 
   // const increment = (amount) => setCartPrice(cartTotal+amount)
   // const[cartTotal, setCartPrice] = useState(0)
+  const [filteredCharactersList, setFilteredCharacters] = useState(characterDataArray)
+  function FilterButton() {
+    function handleClick(){
+      console.log(filteredCharactersList)
+      return setFilteredCharacters(filteredCharactersList.filter((character) => character.props.class === "Fighter"))
+    }
+    return (
+      <button onClick={handleClick}>
+        Fighters
+      </button>
+    );
+  }
 
   return (
     <div className="App">
       <div>
 
       <h1>Adventurer's Guild</h1>
-      {characterItems}
+      {filteredCharactersList}
       </div>
 
       <div class="cart">
@@ -62,7 +79,7 @@ function App() {
       ))}</div>
       <div class = "filter">
           <h2>Filter</h2>
-          {fighterList}
+          <FilterButton/>
       </div>
 
 

@@ -1,5 +1,28 @@
 // // import characterData from "src/assets/character-data.json"
 
+
+export default function FilterButton(prop) {
+    return (
+    <div class="filterButton">
+        <button onClick = {() => buttonClickFunc(prop)} > {prop.class} </button>
+    </div>
+    );
+  }
+
+
+
+
+function buttonClickFunc(prop) {
+    prop.fighterFilter(prop)
+}
+
+
+
+
+
+
+
+
 // const Buttons = ({setItem, characterList}) => {
 //     return(
 //         <>
