@@ -45,5 +45,18 @@
 .App-link {
   color: #61dafb;
 }
+.filterButton{
+  margin:1rem;
+}
+
+.filterBoxContent{
+  margin:1rem;
+}
+
+.filterBox{
+  background-color: #f7f7e2;
+  border: 2px solid #222222;
+  margin: 1rem;
+}
 
 

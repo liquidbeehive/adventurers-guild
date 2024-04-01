@@ -13,7 +13,7 @@ export default function FilterButton(prop) {
 
 
 function buttonClickFunc(prop) {
-    prop.fighterFilter(prop)
+    prop.handleClick(prop)
 }
 
 

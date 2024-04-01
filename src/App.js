@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState } from "react";
 import characterData from "./assets/character-data.json";
 import CharacterItem from "./components/CharacterItem";
-// import FilterButton from "./components/FilterButton";
+import FilterButton from "./components/FilterButton";
 
 characterData.forEach((item) => {
   item.image = process.env.PUBLIC_URL + "/" + item.image;
@@ -38,6 +38,7 @@ function App() {
       image = {item.image}
       addToCartList={addToCartList}/>
     )))]
+
   
   // const [filteredCharactersList, setFilteredCharacters] = useState(characterDataArray)
   // const displayedList = filteredCharactersList
@@ -51,11 +52,14 @@ function App() {
 
   // const increment = (amount) => setCartPrice(cartTotal+amount)
   // const[cartTotal, setCartPrice] = useState(0)
+
+
+//testing just fighters
   const [filteredCharactersList, setFilteredCharacters] = useState(characterDataArray)
-  function FilterButton() {
+
+  function FighterButton() {
     function handleClick(){
-      console.log(filteredCharactersList)
-      return setFilteredCharacters(filteredCharactersList.filter((character) => character.props.class === "Fighter"))
+      setFilteredCharacters(filteredCharactersList.filter((character) => character.props.class === "Fighter"))
     }
     return (
       <button onClick={handleClick}>
@@ -63,6 +67,58 @@ function App() {
       </button>
     );
   }
+
+  //@LENA: THIS IS THE ONE NEEDING TO BE FIXED
+
+  const handleClassFilterClick = (button) => setFilteredCharacters(characterDataArray.filter((character) => character.props.class === button.class))
+
+  const filterButtons = 
+  characterData.map((item) => (
+    <FilterButton
+    name = {item.class}
+    class = {item.class} 
+    handleClick = {handleClassFilterClick}
+    />
+  ))
+
+  // const [sortBy, setSortBy] = useState("all")
+
+  function DescendingLevelOrderButton() {
+    function handleClick(){
+      setFilteredCharacters(filteredCharactersList.sort((a, b) => b.props.level - a.props.level));
+    }
+    return (
+      <button onClick={handleClick}>
+        Descending
+      </button>
+    );
+  }
+
+  function AscendingLevelOrderButton() {
+    function handleClick(){
+      setFilteredCharacters(filteredCharactersList.sort((a, b) => a.props.level - b.props.level));
+    }
+    return (
+      <button onClick={handleClick}>
+        Ascending
+      </button>
+    );
+  }
+
+  function ResetButton() {
+    function handleClick(){
+      setFilteredCharacters(characterDataArray);
+    }
+    return (
+      <button onClick={handleClick}>
+        Reset Filters
+      </button>
+    );
+  }
+
+
+
+
 
   return (
     <div className="App">
@@ -79,7 +135,18 @@ function App() {
       ))}</div>
       <div class = "filter">
           <h2>Filter</h2>
-          <FilterButton/>
+          <div class="filterBox">
+            <div class = "filterBoxContent">
+              <h3>Class</h3>
+              <FighterButton/>
+              {filterButtons}
+              <h3>Sort by Level</h3>
+              {<AscendingLevelOrderButton/>}
+              {<DescendingLevelOrderButton/>}
+              <h3>Reset</h3>
+              {<ResetButton/>}
+            </div>
+        </div>
       </div>
 
 

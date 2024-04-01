@@ -12,7 +12,7 @@ export default function CharacterItem(prop) {
             {prop.class} | Level {prop.level} | {prop.role}
         </p>
         <p>
-            <button onClick = {() => buttonClickFunc(prop)} > add to party! </button>
+            <button onClick = {() => buttonClickFunc(prop)} > Add to Party! </button>
         </p>
       </div>
     </div>
