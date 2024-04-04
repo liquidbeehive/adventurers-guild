@@ -22,7 +22,7 @@ function App() {
 
   const [filteredCharactersList, setFilteredCharacters] = useState(characterData)
   
-  const handleClassFilterClick = (button) => setFilteredCharacters(resetData.filter((character) => character.classType === button.classType))
+  const handleClassFilterClick = (button) => setFilteredCharacters(characterData.filter((character) => character.classType === button.classType))
   const filterButtons = [...new Set(
     classData.map((item, index) => (
       <FilterButton
@@ -32,7 +32,7 @@ function App() {
       />
     )))]
 
-    const handleRoleFilterClick = (button) => setFilteredCharacters(resetData.filter((character) => character.role === button.role))
+    const handleRoleFilterClick = (button) => setFilteredCharacters(characterData.filter((character) => character.role === button.role))
     const filterRoleButtons = [...new Set(
       roleData.map((item, index) => (
       <FilterRoleButton
