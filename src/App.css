@@ -19,8 +19,7 @@
 .characterTotalInformation{
   background-color: #f7f7e2;
   border: 2px solid #222222;
-  margin: 1rem;
-}
+  margin: 1rem;}
 
 .characterBio{
   margin: 1rem;
@@ -46,7 +45,7 @@
   color: #61dafb;
 }
 .filterButton{
-  margin:1rem;
+  margin-bottom: 0.5rem;
 }
 
 .filterBoxContent{

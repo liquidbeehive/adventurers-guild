@@ -1,116 +1,76 @@
 import './App.css';
-import React, {useState } from "react";
+import React, {useEffect, useState } from "react";
+import classData from "./assets/classes-data.json";
+import roleData from "./assets/role-data.json";
 import characterData from "./assets/character-data.json";
 import CharacterItem from "./components/CharacterItem";
 import FilterButton from "./components/FilterButton";
+import FilterRoleButton from "./components/FilterRoleButton";
 
-characterData.forEach((item) => {
-  item.image = process.env.PUBLIC_URL + "/" + item.image;
-});
+// characterData.forEach((item) => {
+//   item.image = process.env.PUBLIC_URL + "/" + item.image;
+// });
 
 function App() {
 
   // const characterList = [...new Set(characterData.map((item) => item.class))];
 
-  const addToCartList = (character) => setCartList([...cartContent, character])
+  // const addToCartList = (character) => setCartList([...cartContent, character])
   const[cartContent, setCartList] = useState([])
 
-  const characterItems = 
-  characterData.map((item, index) => (
-    <CharacterItem  
-    name = {item.name} 
-    class = {item.class} 
-    level = {item.level}
-    role = {item.role}
-    // increment={increment} 
-    image = {item.image} 
-    addToCartList={addToCartList}/>
-  ))
+  const resetData = characterData
 
-  const characterDataArray = [...new Set(
-    characterData.map((item, index) => (
-      <CharacterItem  
-      key = {item.name}
-      name = {item.name} 
-      class = {item.class} 
-      level = {item.level}
-      role = {item.role}
-      image = {item.image}
-      addToCartList={addToCartList}/>
+  const [filteredCharactersList, setFilteredCharacters] = useState(characterData)
+  
+  const handleClassFilterClick = (button) => setFilteredCharacters(resetData.filter((character) => character.classType === button.classType))
+  const filterButtons = [...new Set(
+    classData.map((item, index) => (
+      <FilterButton
+      key = {index}
+      classType = {item.classType} 
+      handleClick = {handleClassFilterClick}
+      />
     )))]
 
-  
-  // const [filteredCharactersList, setFilteredCharacters] = useState(characterDataArray)
-  // const displayedList = filteredCharactersList
-  // .map((character) =>
-  // (<div key = {character.props.name}>
-  //   {character}
-  // </div>))
-
-  // const fighterFilter = filteredCharactersList.filter((character) => character.props.class === "Fighter")
-  // this.setState({characters:fighterFilter})
-
-  // const increment = (amount) => setCartPrice(cartTotal+amount)
-  // const[cartTotal, setCartPrice] = useState(0)
-
-
-//testing just fighters
-  const [filteredCharactersList, setFilteredCharacters] = useState(characterDataArray)
-
-  function FighterButton() {
-    function handleClick(){
-      setFilteredCharacters(filteredCharactersList.filter((character) => character.props.class === "Fighter"))
-    }
-    return (
-      <button onClick={handleClick}>
-        Fighters
-      </button>
-    );
-  }
-
-  //@LENA: THIS IS THE ONE NEEDING TO BE FIXED
-
-  const handleClassFilterClick = (button) => setFilteredCharacters(characterDataArray.filter((character) => character.props.class === button.class))
-
-  const filterButtons = 
-  characterData.map((item) => (
-    <FilterButton
-    name = {item.class}
-    class = {item.class} 
-    handleClick = {handleClassFilterClick}
-    />
-  ))
-
-  // const [sortBy, setSortBy] = useState("all")
+    const handleRoleFilterClick = (button) => setFilteredCharacters(resetData.filter((character) => character.role === button.role))
+    const filterRoleButtons = [...new Set(
+      roleData.map((item, index) => (
+      <FilterRoleButton
+      key = {index}
+      role = {item.role} 
+      handleClick = {handleRoleFilterClick}
+      />
+    )))]
 
   function DescendingLevelOrderButton() {
-    function handleClick(){
-      setFilteredCharacters(filteredCharactersList.sort((a, b) => b.props.level - a.props.level));
+    function handleDescendClick(){
+      setFilteredCharacters(prev => prev.toSorted((a, b) => b.level - a.level));
     }
     return (
-      <button onClick={handleClick}>
+      <button onClick={handleDescendClick}>
         Descending
       </button>
     );
   }
 
   function AscendingLevelOrderButton() {
-    function handleClick(){
-      setFilteredCharacters(filteredCharactersList.sort((a, b) => a.props.level - b.props.level));
+    function handleAscendClick(){
+      setFilteredCharacters(prev => prev.toSorted((a, b) => a.level - b.level))
+
     }
     return (
-      <button onClick={handleClick}>
+      <button onClick={handleAscendClick}>
         Ascending
       </button>
     );
   }
 
   function ResetButton() {
-    function handleClick(){
-      setFilteredCharacters(characterDataArray);
+    function handleResetClick(){
+      setFilteredCharacters(resetData)
     }
     return (
-      <button onClick={handleClick}>
+      <button onClick={handleResetClick}>
         Reset Filters
       </button>
     );
@@ -125,21 +85,46 @@ function App() {
       <div>
 
       <h1>Adventurer's Guild</h1>
-      {filteredCharactersList}
+      
+      {filteredCharactersList.map((item, index) => (
+      <div key={index}>
+        <CharacterItem  
+        key = {item.name}
+        name = {item.name} 
+        classType = {item.classType} 
+        level = {item.level}
+        role = {item.role}
+        image = {item.image}
+        setCartList={setCartList}
+        cartContent = {cartContent}
+        />
+      </div>
+    ))}
+    
       </div>
 
-      <div class="cart">
+      <div className="cart">
       <h2>Party</h2>
         {cartContent.map((item, index) => ( 
-        <p>{item}</p> 
-      ))}</div>
-      <div class = "filter">
+      
+        <p key = {index}>{item}</p> 
+      ))}
+      ______________
+      <p>
+      Total Party Members: {cartContent.length}
+      </p>
+      
+      </div>
+      <div className = "filter">
           <h2>Filter</h2>
-          <div class="filterBox">
-            <div class = "filterBoxContent">
+          <div className="filterBox">
+            <div className = "filterBoxContent">
               <h3>Class</h3>
-              <FighterButton/>
               {filterButtons}
+              <p>
+                <h3>Role</h3>
+              {filterRoleButtons}
+              </p>
               <h3>Sort by Level</h3>
               {<AscendingLevelOrderButton/>}
               {<DescendingLevelOrderButton/>}

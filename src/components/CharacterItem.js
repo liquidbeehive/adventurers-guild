@@ -1,25 +1,44 @@
+import React, {useState } from "react";
+
 export default function CharacterItem(prop) {
+
+  const[isInCart, setInCart] = useState(true)
+
+  let cartbutton = <button onClick = {() => buttonAddClickFunc(prop)} >  </button>;
+
+  if (isInCart) {
+    cartbutton = <button onClick = {() => {setInCart(false);buttonAddClickFunc(prop)}} > Add to Party! </button>;
+  }
+  else {
+    cartbutton = <button onClick = {() => {setInCart(true);buttonRemoveCLickFunc(prop)}} > Remove from Party! </button>;
+  }
+
+  function buttonAddClickFunc(prop) {
+    prop.setCartList([... prop.cartContent, prop.name])
+    // prop.setPartyTotal(prop)
+  }
+
+  function buttonRemoveCLickFunc(prop){
+    prop.setCartList([...prop.cartContent.toSpliced(prop.cartContent.indexOf(prop.name))])  
+  }
+
     return (
-    <div class="characterTotalInformation">
+    <div className="characterTotalInformation">
       <p>
-        <img class="characterPortrait" src= {prop.image} alt = {prop.name}></img>
+        <img className="characterPortrait" src= {prop.image} alt = {prop.name}></img>
       </p>
-      <div class="characterBio">
-        <p class="propName">
+      <div className="characterBio">
+        <p className="propName">
             {prop.name}
         </p>
         <p>
-            {prop.class} | Level {prop.level} | {prop.role}
+            {prop.classType} | Level {prop.level} | {prop.role}
         </p>
         <p>
-            <button onClick = {() => buttonClickFunc(prop)} > Add to Party! </button>
+          {cartbutton}
         </p>
       </div>
     </div>
     );
   }
 
-    function buttonClickFunc(prop) {
-        prop.addToCartList(prop.name)
-        // prop.increment(prop.price)
-    }

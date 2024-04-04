@@ -1,91 +1,91 @@
 [
     {
         "name": "Whistle",
-        "class": "Paladin",
+        "classType": "Paladin",
         "level": 20,
         "role": "Support",
         "image": "images/whistle.png"
     },
     {
         "name": "Achilles",
-        "class": "Fighter",
+        "classType": "Fighter",
         "level": 16,
         "role": "Support",
         "image": "images/achilles.png"
     },
     {
         "name": "Ruby",
-        "class": "Bard",
+        "classType": "Bard",
         "level": 15,
         "role": "Support",
         "image": "images/ruby.png"
     },
     {
         "name": "Gimble",
-        "class": "Wizard",
+        "classType": "Wizard",
         "level": 10,
         "role": "Damage",
         "image": "images/gimble.png"
     },
     {
         "name": "Ignatios",
-        "class": "Paladin",
+        "classType": "Paladin",
         "level": 12,
         "role": "Utility",
         "image": "images/ignatios.png"
     },
     {
         "name": "Nyx",
-        "class": "Bard",
+        "classType": "Bard",
         "level": 17,
         "role": "Utility",
         "image": "images/nyx.png"
     },
     {
         "name": "Lumi",
-        "class": "Wizard",
+        "classType": "Wizard",
         "level": 12,
         "role": "Damage",
         "image": "images/lumi.png"
     },
     {
         "name": "Sober",
-        "class": "Fighter",
+        "classType": "Fighter",
         "level": 10,
         "role": "Utility",
         "image": "images/sober.png"
     },
     {
         "name": "Bayek",
-        "class": "Fighter",
+        "classType": "Fighter",
         "level": 5,
         "role": "Damage",
         "image": "images/bayek.png"
     },
     {
         "name": "Seto Kaiba",
-        "class": "Wizard",
+        "classType": "Wizard",
         "level": 9,
         "role": "Utility",
         "image": "images/seto-kaiba.png"
     },
     {
         "name": "Ash",
-        "class": "Ranger",
+        "classType": "Ranger",
         "level": 8,
         "role": "Damage",
         "image": "images/ash.png"
     },
     {
         "name": "Thog",
-        "class": "Fighter",
+        "classType": "Fighter",
         "level": 11,
         "role": "Damage",
         "image": "images/thog.png"
     },
     {
         "name": "Ares",
-        "class": "Paladin",
+        "classType": "Paladin",
         "level": 8,
         "role": "Support",
         "image": "images/ares.png"
